@@ -17,7 +17,8 @@ fn main() {
     const ID: i32 = 001;
     let a = [1, 2, 3];
     let heart = '❤';
-    let a = (x, y, a, heart); // reuse var name
+    // reuse var name
+    let a = (x, y, a, heart);
     //frank is 30 and frank likes rust! ID=1, age=30, Hex: 0x1E
     println!(
         "{} is {} and {0} likes rust! ID={id}, age={1}, Hex: 0x{1:X}",
@@ -25,6 +26,20 @@ fn main() {
         age,
         id = ID
     );
-    //a=(2.4, 3.0, [1, 2, 3], '❤')
-    println!("a={:?}", a)
+    let gt30 = if age > 30 { true } else { false };
+    //a=(2.4, 3.0, [1, 2, 3], '❤'), age+1=31, plus_two=32, gt30=false
+    println!(
+        "a={:?}, age+1={}, plus_two={}, gt30={}",
+        a,
+        plus_one(age),
+        plus_two(age),
+        gt30
+    );
+}
+
+fn plus_one(x: i32) -> i32 {
+    return x + 1;
+}
+fn plus_two(x: i32) -> i32 {
+    x + 2
 }
