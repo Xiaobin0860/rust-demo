@@ -35,6 +35,17 @@ fn main() {
         plus_two(age),
         gt30
     );
+
+    let first = String::from("Frank");
+    //The type of last here is &str: it’s a slice pointing to that specific point of the binary.
+    //This is also why string literals are immutable; &str is an immutable reference.
+    let last = "Lee";
+    println!("Hello, {}", full_name(&first, last));
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+    println!("{}", s3);
+    println!("{} {}", s3, s2);
 }
 
 fn plus_one(x: i32) -> i32 {
@@ -42,4 +53,8 @@ fn plus_one(x: i32) -> i32 {
 }
 fn plus_two(x: i32) -> i32 {
     x + 2
+}
+
+fn full_name(first: &String, last: &str) -> String {
+    format!("{} {}", first, last)
 }
