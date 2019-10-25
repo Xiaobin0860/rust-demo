@@ -1,3 +1,23 @@
+
+#[allow(dead_code)]
+#[derive(Debug)]
+enum Gender {
+    MALE,
+    FEMALE,
+}
+impl Default for Gender {
+    fn default() -> Self {
+        Gender::MALE
+    }
+}
+
+#[derive(Debug, Default)]
+struct Person {
+    name: String,
+    age: u8,
+    gender: Gender,
+}
+
 fn main() {
     // vars are immutable by default, rust is a block-scoped language
     // integer: 127u8, i8, ..., u128, i128
@@ -46,6 +66,8 @@ fn main() {
     let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
     println!("{}", s3);
     println!("{} {}", s3, s2);
+
+    test_enums();
 }
 
 fn plus_one(x: i32) -> i32 {
@@ -57,4 +79,16 @@ fn plus_two(x: i32) -> i32 {
 
 fn full_name(first: &String, last: &str) -> String {
     format!("{} {}", first, last)
+}
+
+fn test_enums() {
+    let p1 = Person::default();
+    match p1.gender {
+        Gender::FEMALE => println!("女 {:?}", p1),
+        Gender::MALE => println!("男 {:?}", p1),
+    }
+    if let Gender::MALE = p1.gender {
+        //pretty
+        println!("{:#?}", p1);
+    }
 }
